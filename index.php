@@ -11,7 +11,7 @@
     
 </head>
 <body>
-    <?php include 'header.php'?>
+    <a href="index.php">Home</a><br><br><br>
     <div class="container">
             <div class="row">
                 <div class="col-md-5">
@@ -63,20 +63,53 @@
                     <th scope="col">Volume Min</th>
                 </tr>
             </thead>
-            <tbody id='mainTable'>
-                <tr>
-                    <th scope="row"></th>
-                    <td><input type="number" class="dia" value=""></td>
-                    <td><input type="number" class="depth" value=""></td>
-                    <td class="depthPercent"></td>
-                    <td class="wByd"></td>
-                    <td class="wByc"></td>
-                    <td class="volMax"></td>
-                    <td class="volMin"></td>
-                </tr>
+            <tbody id='mainTableBody'>
             </tbody>
         </table>
     </div>
+    <script>
+        $(document).on('keyup', '#numMeasure', function(){
+            
+            var numRows = $(this).val();
+            // console.log(numRows);            
+
+            var tableRowHtml = "<tr>"+
+                                    "<th scope='row'></th>" + 
+                                    "<td><input type='number' class='dia'></td>" + 
+                                    "<td><input type='number' class='depth'></td>" + 
+                                    "<td id='depthPercent' class='depthPercent'></td>" + 
+                                    "<td id='wByd' class='wByd'></td>" + 
+                                    "<td id='wByc' class='wByc'></td>" + 
+                                    "<td id='volMax' class='volMax'></td>" + 
+                                    "<td id='volMin' class='volMin'></td>" + 
+                                "</tr>"
+
+            $('#mainTableBody').children().remove();
+
+            for (var i=1; i<=numRows; i++){
+                // console.log(i);
+                $('#mainTableBody').append(tableRowHtml);
+                // , function(){
+                    // var newId = $(this).attr('id') + i;
+                    // $(this).attr('id', newId);
+                // })
+            }
+        })
+    </script>
+    <script>
+        // claculation functions
+
+        // depth %
+        function depthPercent(){
+//
+        }
+
+        // w/d
+        function wByd(depth, dia){
+            return dia/depth;
+        }
+
+    </script>
     <script>
         $(document).on('keyup','input.depth', function(){
             var depth = $(this).val();
