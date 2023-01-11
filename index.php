@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Home</title>
+    
 </head>
 <body>
     <?php include 'header.php'?>
     <div class="container">
-        <form action="" method="POST">
             <div class="row">
                 <div class="col-md-5">
                     <div class="form-floating">
                         <input type="number" class="form-control" id="numMeasure" name="numMeasure" placeholder="numMeasure" value="<?php echo $_POST['numMeasure']; ?>" required>
-                        <label for="numMeasure">Enter no. of Measurements:</label>
+                        <label for="numMeasure">Enter no. of Measurements</label>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -45,11 +46,7 @@
                         <label for="plateWidth">Enter Plate Width (mm) </label>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <input type="submit" value="Submit" class="btn btn-success">
-                </div>
             </div>
-        </form>
     </div>
     <br><br>
     <div>
@@ -66,22 +63,54 @@
                     <th scope="col">Volume Min</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php for ($i=0; $i <$_POST['numMeasure'] ; $i++) { ?>
-
+            <tbody id='mainTable'>
                 <tr>
-                    <th scope="row"><?php echo $i+1 ?></th>
-                    <td><input type="number"></td>
-                    <td><input type="number"></td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
+                    <th scope="row"></th>
+                    <td><input type="number" class="dia" value=""></td>
+                    <td><input type="number" class="depth" value=""></td>
+                    <td class="depthPercent"></td>
+                    <td class="wByd"></td>
+                    <td class="wByc"></td>
+                    <td class="volMax"></td>
+                    <td class="volMin"></td>
                 </tr>
-                <?php } ?>
             </tbody>
         </table>
     </div>
+    <script>
+        $(document).on('keyup','input.depth', function(){
+            var depth = $(this).val();
+            var dia = $(this).parent().prev().children().val();
+
+            // console.log("depth ="+depth);
+            // console.log("dia ="+dia);
+
+            // calculate depth %
+            var depthPercent = dia/depth;
+            $(this).parent().siblings('.wByd').text(wByd);
+
+            // calculate w/d
+            var wByd = dia/depth;
+            $(this).parent().siblings('.wByd').text(wByd);
+
+            // calculate w/d
+            var wByd = dia/depth;
+            $(this).parent().siblings('.wByd').text(wByd);
+
+            // calculate w/d
+            var wByd = dia/depth;
+            $(this).parent().siblings('.wByd').text(wByd);
+
+            // calculate w/d
+            var wByd = dia/depth;
+            $(this).parent().siblings('.wByd').text(wByd);
+
+            // calculate w/d
+            var wByd = dia/depth;
+            $(this).parent().siblings('.wByd').text(wByd);
+
+            // $(this).siblings('.depthPercent').text;
+        })
+    </script>
 </body>
 </html>
